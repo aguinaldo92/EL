@@ -1,6 +1,6 @@
 <?php 
 $app->get('/session', function() {
-    $db = new DbHandler();
+    $db = new DbHelper();
     $session = $db->getSession();
     $response["ID"] = $session['ID'];
     $response["email"] = $session['email'];
@@ -10,13 +10,24 @@ $app->get('/session', function() {
 
 $app->post('/login', function() use ($app) {
     require_once 'passwordHash.php';
+    $date = date('Y-m-d H:i:s');
+    echo $date;
+     error_log("$date", 0);
     $r = json_decode($app->request->getBody());
     verifyRequiredParams(array('email', 'password'),$r->user);
     $response = array();
-    $db = new DbHandler();
+    $db = new DbHelper();
     $password = $r->user->password;
     $email = $r->user->email;
-    $user = $db->getOneRecord("select ID,nickname,password,email,created from user where nickname='$email' or email='$email'");
+    $columns = "ID,nickname,password,email,created";
+    $table = "user";
+    $limit = "1";
+    $where = array("email" => "$email");
+    $orwhere = array("nickname" => "$email");
+    $result = $db->select($table, $columns, $where,$orwhere,$limit);
+    $user = $result['data'][0];
+            
+    //$user = $db->getOneRecord("select ID,nickname,password,email,created from user where nickname='$email' or email='$email'");
     if ($user != NULL) {
         if(passwordHash::check_password($user['password'],$password)){
         $response['status'] = "success";
@@ -46,14 +57,18 @@ $app->post('/signUp', function() use ($app) {
     $r = json_decode($app->request->getBody());
     verifyRequiredParams(array('email', 'nickname', 'password'),$r->user);
     require_once 'passwordHash.php';
-    $db = new DbHandler();
+    $db = new DbHelper();
    
     $nickname = $r->user->nickname;
     $email = $r->user->email;
     $password = $r->user->password;
     
+    $columns = 'ID,nickname,password,email,created';
+    $table = 'user';
+    $where = "";
+    $orwhere = "";
     
-    $isUserExists = $db->getOneRecord("select 1 from user where nickname='$nickname' or email='$email'");
+    $isUserExists = $db->select($table, $columns, $where,$orwhere,'1');
     if(!$isUserExists){
         $r->user->password = passwordHash::hash($password);
         $table_name = "user";
@@ -83,7 +98,7 @@ $app->post('/signUp', function() use ($app) {
     }
 });
 $app->get('/logout', function() {
-    $db = new DbHandler();
+    $db = new DbHelper();
     $session = $db->destroySession();
     $response["status"] = "info";
     $response["message"] = "Logged out successfully";

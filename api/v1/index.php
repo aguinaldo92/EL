@@ -1,6 +1,7 @@
 <?php
 
-require_once 'dbHandler.php';
+//require_once 'dbHandler.php';
+require_once 'dbHelper.php';
 require_once 'passwordHash.php';
 require '.././libs/Slim/Slim.php';
 
@@ -38,6 +39,13 @@ function verifyRequiredParams($required_fields,$request_params) {
     }
 }
 
+$app->get('/courses', function() { 
+    global $db;
+    $rows = $db->select("course","ID,title,description,price,start_date,end_date,max_number_of_students,ID_subject",array());
+    echoResponse(200, $rows);
+});
+
+
 
 function echoResponse($status_code, $response) {
     $app = \Slim\Slim::getInstance();
@@ -49,6 +57,9 @@ function echoResponse($status_code, $response) {
 
     echo json_encode($response);
 }
+
+/* Select elenco corsi per data */
+
 
 $app->run();
 ?>
