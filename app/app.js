@@ -23,6 +23,12 @@ app.config(['$routeProvider',
                 templateUrl: 'partials/dashboard.html',
                 controller: 'authCtrl'
             })
+            .when('/courses', {
+                title: 'Courses',
+                templateUrl: 'partials/courses.html',
+                controller: 'courseCtrl'
+            
+            })
             .when('/', {
                 title: 'Login',
                 templateUrl: 'partials/login.html',
@@ -47,9 +53,17 @@ app.config(['$routeProvider',
                     if (nextUrl == '/signup' || nextUrl == '/login') {
 
                     } else {
-                        $location.path("/login");
+                        $location.path("/login"); //all'inizio si viene indirizzati qui
                     }
                 }
             });
         });
     });
+    
+       /* resolve: {
+                    courses: function (Data) {
+                        return Data.get('courses')
+                    }
+                    
+                } */
+    

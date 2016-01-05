@@ -23,6 +23,9 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
             }
         });
     };
+    $scope.gotoCourses = function () {
+        $location.path('courses');
+    };
     $scope.logout = function () {
         Data.get('logout').then(function (results) {
             Data.toast(results);

@@ -46,6 +46,7 @@ class dbHelper {
             return NULL;
         }
     }
+    
 public function getSession(){
     if (!isset($_SESSION)) {
         session_start();
@@ -65,6 +66,7 @@ public function getSession(){
     }
     return $sess;
 }
+    
 public function destroySession(){
     if (!isset($_SESSION)) {
     session_start();
@@ -103,8 +105,6 @@ public function destroySession(){
                 $ow .= " or " .$key. " like :".$key;
                 $a[":".$key] = $value;
             }
-            
-           
             
             $query = "SELECT ".$columns." FROM ".$table." WHERE 1=1 ".$w." ".$ow." LIMIT ".$limit;
             $stmt = $this->db->prepare($query);

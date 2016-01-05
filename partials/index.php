@@ -35,12 +35,17 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" rel="home" title="AngularJS Authentication App">AngularJS Authentication App</a>
+            <a class="navbar-brand" rel="home" title="AngularJS Authentication App">AngularJS Elearning App</a>
           </div>
-         
+          <div class="navbar-header col-md-2">
+            <a class="navbar-brand" rel="home" title="AngularJS Authentication Tutorial" href="http://www.angularcode.com/user-authentication-using-angularjs-php-mysql">Tutorial</a>
+          </div>
+           <div class="navbar-header col-md-2">
+            <a class="navbar-brand" rel="home" title="Download" href="https://app.box.com/s/1uvn9xo9nbi4xxm9g9dx">Download</a>
+          </div>
+        </div>
       </div>
     </div>
-   </div>
     <div >
       <div class="container" style="margin-top:20px;">
 
@@ -58,5 +63,6 @@
   <script src="app/data.js"></script>
   <script src="app/directives.js"></script>
   <script src="app/authCtrl.js"></script>
+  <script src="app/courseCtrl.js" ></script>
 </html>
 

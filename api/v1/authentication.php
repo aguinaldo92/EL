@@ -10,13 +10,11 @@ $app->get('/session', function() {
 
 $app->post('/login', function() use ($app) {
     require_once 'passwordHash.php';
-    $date = date('Y-m-d H:i:s');
-    echo $date;
-     error_log("$date", 0);
-    $r = json_decode($app->request->getBody());
+    $db = new DbHelper();
+        $r = json_decode($app->request->getBody());
     verifyRequiredParams(array('email', 'password'),$r->user);
     $response = array();
-    $db = new DbHelper();
+    
     $password = $r->user->password;
     $email = $r->user->email;
     $columns = "ID,nickname,password,email,created";
