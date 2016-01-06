@@ -20,12 +20,12 @@
                             <i class="icon-coffee green"></i>
                             User's Courses 
                         </h4>
-                        <div>{{$scope}} , {{$rootScope}} , {{Data}}</div>
+                        <div>{{ID}} , {{nickname}}</div>
+                        <div>{{email}} </div>
                         <ul class="list-group">
-                            <li class="list-group-item" ng-repeat="course in courseCtrl.courses">
+                            <li class="list-group-item" ng-repeat="course in courses">
                                 <h3> 
-                                    {{course.name}}
-                                    
+                                    {{course.title}}                                    
                                     <em class="pull-right">{{course.price | currency}} </em> 
                                 </h3>
                             </li>

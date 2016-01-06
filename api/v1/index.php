@@ -40,9 +40,15 @@ function verifyRequiredParams($required_fields,$request_params) {
 }
 
 $app->get('/courses', function() { 
-    global $db;
-    $rows = $db->select("course","ID,title,description,price,start_date,end_date,max_number_of_students,ID_subject",array());
-    echoResponse(200, $rows);
+    $db = new DbHelper();
+    $columns = "ID,title,description,price,start_date,end_date,max_number_of_students,ID_subject";
+    $table = "course";
+    $limit = "1";
+    $where = array();
+    $orwhere = array();
+    $result = $db->select($table, $columns, $where,$orwhere,$limit);
+    
+    echoResponse(200, $result);
 });
 
 

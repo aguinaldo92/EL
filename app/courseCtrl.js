@@ -1,16 +1,11 @@
 app.controller('courseCtrl', function ($scope, $rootScope, $routeParams, $location, $http, Data) {
-    $scope.course = {};
-    /*
-    $scope.getCourses = function () {
-        Data.get('courses').then(function (data) {
-            $scope.courses = data.data;
-            Data.toast(data);
-            if (data.status == "success") {
-                $location.path('courses');
-            }
-        });
-    };
-   */
+    
+   
+    $scope.courses = $rootScope.courses;
+    
+    //$scope.login = $rootScope.login
+    
+   
 
 });
 

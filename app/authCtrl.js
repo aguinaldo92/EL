@@ -8,6 +8,7 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
         }).then(function (results) {
             Data.toast(results);
             if (results.status == "success") {
+                $rootScope.login = $scope.login;
                 $location.path('dashboard');
             }
         });
@@ -23,8 +24,15 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
             }
         });
     };
-    $scope.gotoCourses = function () {
-        $location.path('courses');
+    $scope.getCourses = function () {
+        Data.get('courses').then(function (data) {
+            delete data.data["length"];
+            $rootScope.courses = data.data;
+            Data.toast(data);
+            if (data.status == "success") {
+                $location.path('courses');
+            }
+        });
     };
     $scope.logout = function () {
         Data.get('logout').then(function (results) {
