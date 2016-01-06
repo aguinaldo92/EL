@@ -1,11 +1,12 @@
 <?php 
+
 $app->get('/session', function() {
     $db = new DbHelper();
     $session = $db->getSession();
     $response["ID"] = $session['ID'];
     $response["email"] = $session['email'];
     $response["nickname"] = $session['nickname'];
-    echoResponse(200, $session);
+    echoResponse(200, $response);
 });
 
 $app->post('/login', function() use ($app) {

@@ -1,6 +1,5 @@
 <?php
 
-//require_once 'dbHandler.php';
 require_once 'dbHelper.php';
 require_once 'passwordHash.php';
 require '.././libs/Slim/Slim.php';
@@ -13,6 +12,7 @@ $app = new \Slim\Slim();
 $user_id = NULL;
 
 require_once 'authentication.php';
+require_once 'courseAPI.php';
 
 /**
  * Verifying required params posted or not
@@ -39,17 +39,7 @@ function verifyRequiredParams($required_fields,$request_params) {
     }
 }
 
-$app->get('/courses', function() { 
-    $db = new DbHelper();
-    $columns = "ID,title,description,price,start_date,end_date,max_number_of_students,ID_subject";
-    $table = "course";
-    $limit = "1";
-    $where = array();
-    $orwhere = array();
-    $result = $db->select($table, $columns, $where,$orwhere,$limit);
-    
-    echoResponse(200, $result);
-});
+
 
 
 
