@@ -54,6 +54,8 @@
   <script src="js/angular-route.min.js"></script>
   <script src="js/angular-animate.min.js" ></script>
   <script src="js/toaster.js"></script>
+  <script src="js/underscore.js"></script>
+  <script src="js/myFunctions.js"></script>
   <script src="app/app.js"></script>
   <script src="app/data.js"></script>
   <script src="app/directives.js"></script>

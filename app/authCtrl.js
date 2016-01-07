@@ -26,8 +26,8 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
     };
     $scope.getCourses = function () {
         Data.get('courses').then(function (data) {
-            delete data.data["length"];
-            $rootScope.courses = data.data;
+            var courses = data.data;
+            $rootScope.courses = courses;
             Data.toast(data);
             if (data.status == "success") {
                 $location.path('courses');

@@ -12,7 +12,7 @@ $app->get('/session', function() {
 $app->post('/login', function() use ($app) {
     require_once 'passwordHash.php';
     $db = new DbHelper();
-        $r = json_decode($app->request->getBody());
+    $r = json_decode($app->request->getBody());
     verifyRequiredParams(array('email', 'password'),$r->user);
     $response = array();
     
