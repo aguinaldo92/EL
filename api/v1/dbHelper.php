@@ -87,7 +87,7 @@ public function destroySession(){
     return $msg;
 }
     
-    function select($table, $columns, $where, $orwhere, $limit = '9999999999'){  // $table supporta le join: $rows = $db->select("ts_users LEFT JOIN ts_companies ON usr_co_id = co_id",array());
+    function select($table, $columns, $where, $orwhere, $limit = 99999){  // $table supporta le join: $rows = $db->select("ts_users LEFT JOIN ts_companies ON usr_co_id = co_id",array());
         try{
             $a = array();  // chiave associativa per l'array di condizioni where in AND and OR
            
