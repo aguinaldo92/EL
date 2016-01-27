@@ -1,0 +1,46 @@
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li class="active">Home</li>
+    </ul>
+</div>
+<!-- end broadcrumb -->
+
+<div class="page-content">
+    <div class="row">
+        <div class="space-6"></div>
+        <div class="col-sm-10 col-sm-offset-1">
+            <div class="btn-group col-md-offset-4">
+                <button type="button" class="btn btn-primary btn-md" ng-click="getAllCourses()">Show Courses</button>
+                <button type="button" class="btn btn-primary btn-md" ng-click="getAllTeachers()">Show Teachers</button>
+            </div>
+            <div ng-switch="selectedList">
+                <!-- show teachers list -->
+                <ul class="list-group" ng-switch-when="courses">
+                    <li class="list-group-item" ng-repeat="course in allCourses">
+                        <h3> 
+                            {{course.title}}
+                            <div class="btn-group pull-right">
+                                <button class="btn btn-success" ng-click="goToCourseDetails(course.ID)">View Details</button>
+                                <button class="btn btn-warning">Buy now for <em>{{course.price| currency}}</em></button>
+                            </div>
+                        </h3>
+                    </li>
+                </ul>
+                <!-- show teachers list -->
+                <ul class="list-group" ng-switch-when="teachers">
+                    <li class="list-group-item" ng-repeat="teacher in allTeachers">
+                        <h3> 
+                            <img ng-alt="FOTO" ng-src="'data:image/png;base64,'{{teacher.image}}" class="img-rounded" />
+                            {{teacher.first_name}}
+                            {{teacher.last_name}}                        
+                            <div class="btn-group pull-right">
+                                <button class="btn btn-success">View Details</button>
+                                <button class="btn btn-warning">Send message</button>
+                            </div>
+                        </h3>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
