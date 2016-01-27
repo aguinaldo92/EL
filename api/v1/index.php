@@ -11,8 +11,9 @@ $app = new \Slim\Slim();
 // User id from db - Global Variable
 $user_id = NULL;
 
-require_once 'authentication.php';
-require_once 'courseAPI.php';
+require_once './authentication.php';
+require_once './courseAPI.php';
+require_once './teacherAPI.php';
 
 /**
  * Verifying required params posted or not
