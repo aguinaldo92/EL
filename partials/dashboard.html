@@ -7,6 +7,8 @@
         <li class="active">Dashboard</li>
     </ul>
 </div>
+<!-- end broadcrumb -->
+
 <div class="page-content">
     <div class="row">
         <div class="space-6"></div>
@@ -15,17 +17,18 @@
                 <div class="widget-body">
                     <div class="widget-main">
                         <h4 class="header blue lighter bigger">
-                    <i class="icon-coffee green"></i>
-                    User Authenticated
-                </h4>
+                            <i class="icon-coffee green"></i>
+                            User Authenticated
+                        </h4>
                         <div class="space-16"></div>
                         ID: {{ID}}
                         <br/>NICKNAME: {{nickname}}
                         <br/>E-MAIL: {{email}}
                         <br/>
-                        <a ng-click="logout();">Logout</a>
-                         <br/>
-                        <a ng-click="getCourses();">Courses</a>
+                        <button ng-click="getCourses();">Courses</button>
+                        <br/>
+                        <button class="btn btn-danger pull-right" ng-click="logout();">Logout</button>
+                        
                     </div>
                 </div>
             </div>

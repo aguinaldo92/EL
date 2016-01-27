@@ -1,0 +1,38 @@
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Home</a>
+        </li>
+        <li class="active">Vista Dettaglio: {{selectedCourse.title}}</li>
+    </ul>
+</div>
+<!-- end broadcrumb -->
+
+
+<div class="container-fluid">
+    <h1>{{selectedCourse.title}}</h1>
+    <div class="row">
+        <div class="col-sm-8" style="background-color:lavender;">    
+            <h3>{{selectedCourse.description}}</h3>
+        </div>
+        <div class="col-sm-4" style="background-color:lavenderblush;">
+            <h5>Start date:</h5>
+            <p>{{selectedCourse.start_date}}</p>
+            <br/>
+            <br/>
+            <h5>End date:</h5>
+            <p>{{selectedCourse.end_date}}</p>
+        </div>
+    </div>
+
+    <div class="alert alert-info col-sm-12">
+        Max number of students: <strong> {{selectedCourse.max_number_of_students}}</strong>
+    </div>
+
+    <button class="btn btn-warning pull-right">Buy now for <em>{{selectedCourse.price| currency}}</em></button>
+    <button class="btn btn-info pull-right" ng-click="goToHome()">Back to course list</em></button>
+    <div class="alert alert-warning col-sm-4">
+        <strong>Aggiungere</strong> lista lezioni del corso
+    </div>
+</div>

@@ -1,5 +1,7 @@
 app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location, $http, Data) {
     //initially set those objects to null to avoid undefined error
+
+    //$scope.isUser = $rootScope.authenticated;
     $scope.login = {};
     $scope.signup = {};
     $scope.doLogin = function (user) {

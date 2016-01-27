@@ -29,14 +29,20 @@ app.config(['$routeProvider',
                     controller: 'courseCtrl'
 
                 })
-                .when('/', { // da cambiare per redirigere alla home page del sito quando sarà pronta
-                    title: 'Login',
-                    templateUrl: 'partials/login.html',
-                    controller: 'authCtrl',
+                .when('/courses/:courseId', {
+                    title: 'Course Details',
+                    templateUrl: 'partials/coursedetails.html',
+                    controller: 'courseDetailsCtrl'
+
+                })
+                .when('/', {// da cambiare per redirigere alla home page del sito quando sarà pronta
+                    title: 'Home',
+                    templateUrl: 'partials/home.html',
+                    controller: 'homeCtrl',
                     role: '0'
                 })
                 .otherwise({
-                    redirectTo: '/login'
+                    redirectTo: '/'
                 });
     }])
         .run(function ($rootScope, $location, Data) {
@@ -46,6 +52,7 @@ app.config(['$routeProvider',
                     Data.get('session').then(function (results) {
                         if (results.ID) {
                             $rootScope.authenticated = true;
+                            //$scope.isUser = true;
                             $rootScope.ID = results.ID;
                             $rootScope.nickname = results.nickname;
                             $rootScope.email = results.email;
@@ -54,7 +61,7 @@ app.config(['$routeProvider',
                             if (nextUrl == '/signup' || nextUrl == '/login') {
 
                             } else {
-                                $location.path("/login"); //all'inizio si viene indirizzati qui
+                                $location.path("/"); //all'inizio si viene indirizzati qui
                             }
                         }
                     });
