@@ -7,8 +7,8 @@ app.factory("Data", ['$http', 'toaster',
         obj.toast = function (data) {
             toaster.pop(data.status, "", data.message, 10000, 'trustedHtml');
         };
-        obj.get = function (q) {
-            return $http.get(serviceBase + q).then(function (results) {
+        obj.get = function (q, object) {
+            return $http.get(serviceBase + q, object).then(function (results) {
                 return results.data;
             });
         };

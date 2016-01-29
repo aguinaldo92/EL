@@ -6,8 +6,8 @@ $app->get('/courses', function() {
     $table = "course";    
     $where = array();
     $orwhere = array();
-    $limit = 9999;
-    $result = $db->select($table, $columns, $where,$orwhere,$limit);
+    //$limit = 1;
+    $result = $db->select($table, $columns, $where,$orwhere);
     echoResponse(200, $result);
 });
 

@@ -9,7 +9,7 @@ app.controller('homeCtrl', function ($scope, $rootScope, $routeParams, $location
         });
         $scope.selectedList="courses";
     };
-    //$scope.getAllCourses();
+    $scope.getAllCourses();
     $scope.getAllTeachers = function () {
         Data.get('teachers').then(function (data) {
             $rootScope.teachers = data.data;
